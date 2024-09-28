@@ -1,6 +1,6 @@
-#include <stdlib.h>
+#include "spvector.h"
 #include <stdio.h>
-#include "spvector.h" 
+#include <stdlib.h>
 
 /* definition of Node is hidden from the client (driver) so that client CANNOT
  * use INTERNALS of the Node.  this is poor-man encapsulations - hiding
@@ -11,31 +11,46 @@
  * than field name "left".  Also see typedef in map.h
  */
 struct ElementNode {
-  int    data;
-  int    pos;
-  struct ElementNode* next;
+  int data;
+  int pos;
+  struct ElementNode *next;
 };
 
 typedef struct ElementNode ElementNode;
 typedef struct RowNode RowNode;
 
-
 /*print functions*/
 void printf_elements(ConstElementNode_handle p_e, char const *fmt, int dim) {
-	int i,last_pos=-1;
-	while (p_e) {
-		for (i=last_pos+1;i<p_e->pos;++i) { printf(fmt,0); }
-		printf(fmt,p_e->data);
-		last_pos=p_e->pos;
-		p_e = p_e->next;
-	}
-	for (i=last_pos+1;i<dim;++i) { printf(fmt,0); }
+  int i, last_pos = -1;
+  while (p_e) {
+    for (i = last_pos + 1; i < p_e->pos; ++i) {
+      printf(fmt, 0);
+    }
+    printf(fmt, p_e->data);
+    last_pos = p_e->pos;
+    p_e = p_e->next;
+  }
+  for (i = last_pos + 1; i < dim; ++i) {
+    printf(fmt, 0);
+  }
 }
 
 void print_elements(ConstElementNode_handle p_e) {
-	while (p_e) {
-		printf("%i at pos %i, ",p_e->data,p_e->pos);
-		p_e = p_e->next;
-	}
+  while (p_e) {
+    printf("%i at pos %i, ", p_e->data, p_e->pos);
+    p_e = p_e->next;
+  }
 }
+
+int insert_element(ElementNode_handle * element, int, int) {}
+
+void delete_element(ElementNode_handle *, int) {}
+
+int get(ConstElementNode_handle, int) {}
+
+int scalar_product(ConstElementNode_handle, ConstElementNode_handle) {}
+
+ElementNode_handle add(ConstElementNode_handle, ConstElementNode_handle) {}
+
+void free_elements(ElementNode_handle) {}
 

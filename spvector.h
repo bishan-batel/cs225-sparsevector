@@ -16,11 +16,11 @@
  * "const ElementNode*" and "const ElementNode_handle"
  * are DIFFERENT:
  * const ElementNode* p; is modifiable pointer to constant data
- * while 
+ * while
  * const ElementNode_handle p; is constant pointer to modifiable data
  */
-typedef struct ElementNode *       ElementNode_handle;
-typedef struct ElementNode const * ConstElementNode_handle;
+typedef struct ElementNode *ElementNode_handle;
+typedef struct ElementNode const *ConstElementNode_handle;
 
 /*===================*
  * element functions *
@@ -29,42 +29,42 @@ typedef struct ElementNode const * ConstElementNode_handle;
 /* print elements as a vector, adding 0's for non-existing positions
  * assume the length of the vector = dim
  * doesn't check if the list contains positions beyond dim */
-void printf_elements( ConstElementNode_handle, char const *, int); 
+void printf_elements(ConstElementNode_handle, char const *, int);
 
-/* 
+/*
  * print all elements in the list with positions */
 void print_elements(ConstElementNode_handle); /* no zeros */
 
-/* insert an element into a list 
+/* insert an element into a list
  * list is ordered using pos
  * if position pos is already occupied, the value of the node
  * should be updated with val
  * if val=0, then the element should be deleted
- * return 0 if operation is succesfull 
+ * return 0 if operation is succesfull
  *        1 if malloc failed */
-int insert_element(ElementNode_handle *,int,int);
+int insert_element(ElementNode_handle *, int, int);
 
-/* 
+/*
  * delete an element at position pos if it exists */
-void delete_element( ElementNode_handle *,int );
+void delete_element(ElementNode_handle *, int);
 
 /*
  * get the value at the given position,
- * p_e is the head pointer 
+ * p_e is the head pointer
  */
-int  get( ConstElementNode_handle, int );
+int get(ConstElementNode_handle, int);
 
-/* 
+/*
  * scalar product of 2 lists.
  * */
-int scalar_product( ConstElementNode_handle, ConstElementNode_handle );
+int scalar_product(ConstElementNode_handle, ConstElementNode_handle);
 
-/* 
+/*
  * adds 2 lists as vectors, returns a new list */
-ElementNode_handle add( ConstElementNode_handle,ConstElementNode_handle );
+ElementNode_handle add(ConstElementNode_handle, ConstElementNode_handle);
 
-/* 
+/*
  * deallocate a list */
-void free_elements( ElementNode_handle );
+void free_elements(ElementNode_handle);
 
 #endif
