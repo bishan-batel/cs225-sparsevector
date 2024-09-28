@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "spvector.h" 
+
 /* definition of Node is hidden from the client (driver) so that client CANNOT
  * use INTERNALS of the Node.  this is poor-man encapsulations - hiding
  * implementation details.  The main reason for encapsulations -- if I ever
